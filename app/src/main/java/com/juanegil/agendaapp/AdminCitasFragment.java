@@ -82,11 +82,22 @@ public class AdminCitasFragment extends Fragment implements CitasAdapter.OnItemC
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                filtrarCliente(newText);
                 return false;
             }
         });
 
         return view;
+    }
+
+    private void filtrarCliente(String text) {
+        ArrayList<Cita> listaFiltrada = new ArrayList<>();
+        for (Cita cita : listaCitas) {
+            if (cita.nombreCliente.toLowerCase().contains(text.toLowerCase())) {
+                listaFiltrada.add(cita);
+            }
+        }
+        citasAdapter.filtrarCliente(listaFiltrada);
     }
 
     private void setupRecyclerView() {

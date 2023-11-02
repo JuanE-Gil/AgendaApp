@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.juanegil.agendaapp.R;
 import com.juanegil.agendaapp.models.Cita;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CitasAdapter extends RecyclerView.Adapter<CitasAdapter.viewHolder> {
@@ -53,6 +54,11 @@ public class CitasAdapter extends RecyclerView.Adapter<CitasAdapter.viewHolder> 
     @Override
     public int getItemCount() {
         return listaCitas.size();
+    }
+
+    public void filtrarCliente(List<Cita> listaFiltrada) {
+        this.listaCitas = listaFiltrada;
+        notifyDataSetChanged();
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
