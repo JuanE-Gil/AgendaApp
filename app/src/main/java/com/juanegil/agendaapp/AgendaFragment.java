@@ -6,14 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.juanegil.agendaapp.adapter.CitasDiaAdapter;
 import com.juanegil.agendaapp.databinding.FragmentAgendaBinding;
+import com.juanegil.agendaapp.models.Cita;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AgendaFragment extends Fragment {
 
-
     FragmentAgendaBinding binding;
+    List<Cita> listaCitas = new ArrayList<>();
+    CitasDiaAdapter citasDiaAdapter;
 
     public AgendaFragment() {
         // Required empty public constructor
@@ -40,5 +48,13 @@ public class AgendaFragment extends Fragment {
         ((MainActivity) getActivity()).getSupportActionBar().hide();
 
         return vista;
+    }
+
+    private void setupRecyclerView(RecyclerView rvDia, List<Cita> listaDia) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(layoutManager.VERTICAL);
+        rvDia.setLayoutManager(layoutManager);
+        citasDiaAdapter = new CitasDiaAdapter(listaDia);
+        rvDia.setAdapter(citasDiaAdapter);
     }
 }
