@@ -18,9 +18,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setSupportActionBar(binding.toolbar);
         setContentView(binding.getRoot());
-
         binding.bottomNavigationView.setItemIconTintList(null);
-
         setupNavigation();
     }
 
